@@ -11,7 +11,7 @@ router.get('/',selectall.selectAll, function(req, res, next) {});
 
 
 router.post('/inseretsalads',insertSalads.insertSalads, function(req, res, next) {});
-router.post('/deleteitem',deleteSalads.deleteSalad, function(req, res, next) {});
+router.post('/remove',deleteSalads.deleteSalad, function(req, res, next) {});
 
 
 

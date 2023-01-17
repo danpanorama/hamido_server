@@ -11,7 +11,7 @@ router.get('/',selectall.selectAll, function(req, res, next) {});
 
 
 router.post('/inseretextra',insertExtra.insertExtra, function(req, res, next) {});
-router.post('/deleteitem',deleteExtra.deleteExtra, function(req, res, next) {});
+router.post('/remove',deleteExtra.deleteExtra, function(req, res, next) {});
 
 
 

@@ -10,17 +10,17 @@ const selectAll = () => {
   };
 
   const selectProductBynameAndServWay = (name,servingwayid) => {
-    return pool.execute(`SELECT * FROM hamido.menu where portion = ? AND servingwayid = ? `,[name,servingwayid]);
+    return pool.execute(`SELECT * FROM hamido.menu where name = ? AND servingwayid = ? `,[name,servingwayid]);
   };
 
   
-  const insertNewMenuItem = (portion,servingwayid,mprice,mimg,mactive,sumextra,servingway) => {
+  const insertNewMenuItem = (portion,servingwayid,mprice,mimg,mactive,sumextra,servingway,productname) => {
     return pool.execute(
       `INSERT INTO menu 
-      (name,servingwayid,mprice,mimg,mactive,sumextra,servingway) 
+      (name,servingwayid,mprice,mimg,mactive,sumextra,servingway,productname) 
       VALUES 
-      (?,?,?,?,?,?,?)`,
-      [portion,servingwayid,mprice,mimg,mactive,sumextra,servingway]
+      (?,?,?,?,?,?,?,?)`,
+      [portion,servingwayid,mprice,mimg,mactive,sumextra,servingway,productname]
     );
   };
   const updateMealSumExtras = (sumextra,id) => {

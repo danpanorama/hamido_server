@@ -1,4 +1,4 @@
-const mysql = require("../../../models/admin/salads");
+const mysql = require("../../../models/admin/products");
 
 
 

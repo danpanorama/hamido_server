@@ -5,7 +5,7 @@ const mysql = require("../../../models/admin/salads");
 const deleteSalad = async (req, res, next) => {
     try {
       let deleteProduct = await mysql.deleteSalad(req.body.id)
-      if(deleteProduct.affectedRows > 0){
+      if(deleteProduct[0].affectedRows > 0){
         res.json({data:req.body,msg:{msg:'הצלחת להסיר סלט מהתפריט',type:'good'}})
 
       }else{

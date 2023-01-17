@@ -4,14 +4,14 @@ const mysql = require("../../../models/admin/extras");
 
 const insertExtra = async (req, res, next) => {
     try {
-        let checkIfProductExist = await mysql.selectByName(req.body.name)
+        let checkIfProductExist = await mysql.selectByName(req.body.ename)
         if(checkIfProductExist[0].length > 0){
             return res.json({err:{msg:'כבר יש לך תוספת כזאת עם אותו שם   ',type:'bad'}})
         }else{
-             ins = await mysql.insertNewExtra(req.body.name,req.body.price,req.body.img,req.body.active)
+             ins = await mysql.insertNewExtra(req.body.ename,req.body.eprice,req.body.eimg,req.body.eactive)
 
         }
-        req.body.mid = ins[0].insertId
+        req.body.eid = ins[0].insertId
         res.json({data:req.body,msg:{msg:'הצלחת להוסיף תוספת חדשה',type:'good'}})
 
     } catch (e) {

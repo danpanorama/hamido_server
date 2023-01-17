@@ -11,7 +11,7 @@ router.get('/',selectall.selectAll, function(req, res, next) {});
 
 
 router.post('/inseretservway',insertServingWay.inseretServ, function(req, res, next) {});
-router.post('/deleteservway',deleteServingWays.deleteServingWay, function(req, res, next) {});
+router.post('/remove',deleteServingWays.deleteServingWay, function(req, res, next) {});
 
 
 

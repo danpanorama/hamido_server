@@ -11,7 +11,7 @@ router.get('/menubyid', function(req, res, next) {});
 
 
 
-router.post('/inseretitem',insertMenuItem.insertProduct, function(req, res, next) {});
+router.post('/insertmenu',insertMenuItem.insertMenu, function(req, res, next) {});
 router.post('/deleteitem',deleteProduct.deleteProducts, function(req, res, next) {});
 
 

@@ -4,14 +4,14 @@ const mysql = require("../../../models/admin/salads");
 
 const insertSalads = async (req, res, next) => {
     try {
-        let checkIfProductExist = await mysql.selectAllByName(req.body.name)
+        let checkIfProductExist = await mysql.selectAllByName(req.body.sname)
         if(checkIfProductExist[0].length > 0){
             return res.json({err:{msg:'כבר יש לך סלט כזה עם אותו שם   ',type:'bad'}})
         }else{
-             ins = await mysql.insertNewSalads(req.body.name,req.body.img,req.body.active)
+             ins = await mysql.insertNewSalads(req.body.sname,req.body.simg,req.body.sactive)
 
         }
-        req.body.mid = ins[0].insertId
+        req.body.sid = ins[0].insertId
         res.json({data:req.body,msg:{msg:'הצלחת להוסיף סלט חדשה',type:'good'}})
 
     } catch (e) {

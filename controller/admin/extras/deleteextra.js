@@ -5,7 +5,7 @@ const mysql = require("../../../models/admin/extras");
 const deleteExtra = async (req, res, next) => {
     try {
       let deleteProduct = await mysql.deleteExtra(req.body.id)
-      if(deleteProduct.affectedRows > 0){
+      if(deleteProduct[0].affectedRows > 0){
         res.json({data:req.body,msg:{msg:'הצלחת להסיר מנה מהתפריט',type:'good'}})
 
       }else{
