@@ -13,6 +13,8 @@ const menuRouter = require('./routes/menu');
 const productsRouter = require('./routes/products');
 const saladsRouter = require('./routes/salads');
 const sevingwayRouter = require('./routes/sevingway');
+const storeRouter = require('./routes/store');
+
 
 
 var app = express();
@@ -37,6 +39,7 @@ app.use('/menu', menuRouter);
 app.use('/products', productsRouter);
 app.use('/salads', saladsRouter);
 app.use('/sevingway', sevingwayRouter);
+app.use('/store', storeRouter);
 
 
 

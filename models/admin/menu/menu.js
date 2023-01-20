@@ -5,8 +5,8 @@ const pool = require("../../mysql");
 const selectAll = () => {
     return pool.execute(`SELECT * FROM hamido.menu `);
   };
-  const selectAllActive = (active) => {
-    return pool.execute(`SELECT * FROM hamido.menu where mactive = ? `,[active]);
+  const selectAllActive = () => {
+    return pool.execute(`SELECT * FROM hamido.menu where mactive = 1 `,[]);
   };
 
   const selectProductBynameAndServWay = (name,servingwayid) => {
