@@ -12,7 +12,9 @@ const selectAll = () => {
   const selectProductBynameAndServWay = (name,servingwayid) => {
     return pool.execute(`SELECT * FROM hamido.menu where name = ? AND servingwayid = ? `,[name,servingwayid]);
   };
-
+  const deleteMenuItem = (id) => {
+    return pool.execute(`DELETE FROM hamido.menu WHERE mid=? `,[id]);
+  };
   
   const insertNewMenuItem = (portion,servingwayid,mprice,mimg,mactive,sumextra,servingway,productname) => {
     return pool.execute(
@@ -68,4 +70,5 @@ module.exports.selectAllActive = selectAllActive
 module.exports.insertNewMenuItem = insertNewMenuItem
 module.exports.selectProductBynameAndServWay = selectProductBynameAndServWay
 
+module.exports.deleteMenuItem = deleteMenuItem
 
