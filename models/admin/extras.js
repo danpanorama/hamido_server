@@ -5,7 +5,9 @@ const pool = require("../mysql");
 const selectAll = () => {
     return pool.execute(`SELECT * FROM hamido.extras `);
   };
-
+  const selectAllActive = () => {
+    return pool.execute(`SELECT * FROM hamido.extras where aextra = 1 `);
+  };
   const selectByName = (name) => {
     return pool.execute(`SELECT * FROM hamido.extras where ename = ? `,[name]);
   };
@@ -49,5 +51,6 @@ const selectAll = () => {
    module.exports.updateExtrasImage = updateExtrasImage
    module.exports.deleteExtra = deleteExtra
    module.exports.selectByName = selectByName
+   module.exports.selectAllActive = selectAllActive
 
    

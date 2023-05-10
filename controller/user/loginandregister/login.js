@@ -1,21 +1,19 @@
-const authBcrypt = require("../../auth/bcrypt");
+const authBcrypt = require("../../../auth/bcrypt");
 const users = require("../../../models/user/register");
-const jwt = require("../../auth/jwt");
-const localStorage = require("localStorage");
+const jwt = require("../../../auth/jwt");
 
 
 // this is logg in function
 const Login = async (req, res, next) => {
-  localStorage.setItem("isRemember", req.body.remember);
 
-  if (req.body.name && req.body.password) {
+  if (req.body.name && req.body.pass) {
     try {
       let data = req.body
       let findUser = await users.selectUserByName(data.name);
       if (findUser[0].length > 0) {
         let checkpassword = await authBcrypt.checkPassword(
-          req.body.password,
-          findUser[0][0].password
+          req.body.pass,
+          findUser[0][0].userhash
         );
 
         let checkTokens = await jwt.makeToken({
@@ -36,21 +34,21 @@ const Login = async (req, res, next) => {
           res.json({
             msg: { msg:"    שם או סיסמה לא נכונים " + e,type:'bad'}
           });
-        }
+        } 
       } else {
         res.json({
-          msg: { msg:" לא נמצא לקוח כזה " + e,type:'bad'}
+          msg: { msg:" לא נמצא לקוח כזה ",type:'bad'}
         })
       }
-    } catch (e) {
+    } catch(e) {
       console.log( e.message);
       res.json({
-        msg: { msg:"ישנה בעיה בהתחברות  " + e,type:'bad'}
+        msg: { msg:"ישנה בעיה בהתחברות  ",type:'bad'}
       });
     }
   } else {
     res.json({
-      msg: { msg:"לא הכנסת מידע לאינפוט  " + e,type:'bad'}
+      msg: { msg:"לא הכנסת מידע לאינפוט  " ,type:'bad'}
     });
   }
 };

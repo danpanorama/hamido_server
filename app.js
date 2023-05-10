@@ -9,6 +9,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const extrasRouter = require('./routes/extras');
+const orderRouter = require('./routes/order');
+
 const menuRouter = require('./routes/menu');
 const productsRouter = require('./routes/products');
 const saladsRouter = require('./routes/salads');
@@ -40,6 +42,7 @@ app.use('/products', productsRouter);
 app.use('/salads', saladsRouter);
 app.use('/sevingway', sevingwayRouter);
 app.use('/store', storeRouter);
+app.use('/order', orderRouter);
 
 
 

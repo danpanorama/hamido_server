@@ -1,4 +1,4 @@
-const pool = require("../../mysql");
+const pool = require("../mysql");
 
 
 const selectUserByEmail = (email) => {
@@ -6,21 +6,21 @@ const selectUserByEmail = (email) => {
 };
 
 const selectUserByName = (name) => {
-  return pool.execute(`SELECT * FROM hamido.users WHERE name = ? `, [name]);
+  return pool.execute(`SELECT * FROM hamido.users WHERE username = ? `, [name]);
 };   
 
 const selectUserByPasswordEmail = (password,email) => {
-    return pool.execute(`SELECT * FROM hamido.users  WHERE password = ? AND email = ?`, [password,email]);
+    return pool.execute(`SELECT * FROM hamido.users  WHERE userhash = ? AND email = ?`, [password,email]);
   };
 
 
-const insertNewUser = (name, password, email, date, phone,address) => {
+const insertNewUser = (name, password, phone) => {
   return pool.execute(
     `INSERT INTO hamido.users 
-    (name, password, email, date,phone,address) 
+    (username, userhash,phone) 
     VALUES 
-    (?, ?, ?, ?, ?,?)`,
-    [name, password, email, date, phone,address]
+    (?, ?, ?)`,
+    [name, password, phone]
   );
 };
 
